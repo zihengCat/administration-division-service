@@ -28,7 +28,8 @@ import administration_division_service as ads
 c = ads.Administration_division_service()
 
 # 3. 调用解析方法
-print(c.parseCode('130529'))
+i = c.parseCode('130529')
+print(i)
 ```
 > 代码清单：示例代码（详见`main.py`）
 

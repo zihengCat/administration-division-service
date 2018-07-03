@@ -9,6 +9,18 @@ if __name__ == '__main__':
     c = ads.Administration_division_service()
 
     # 测试用例
+
+    # 省级用例
+    print(c.parseCode('110000'))
+    print(c.parseCode('330000'))
+    print(c.parseCode('810000'))
+
+    # 地市用例
+    print(c.parseCode('130200'))
+    print(c.parseCode('130800'))
+    print(c.parseCode('652300'))
+
+    # 区县用例
     print(c.parseCode('130529'))
     print(c.parseCode('130432'))
     print(c.parseCode('110105'))

@@ -11,50 +11,92 @@ class Administration_division_service(object):
         # 打开数据JSON，转换为Dict
         #with open(os.path.abspath('./location.min.json'), 'rt') as f:
         self.location_dict = json.loads(t_json)
+        # 特殊城市：北京市，天津市，上海市，重庆市，香港，澳门
+        self.sp_cities = ['110000', '120000', '310000', '500000', '810000', '820000']
 
     # 参数：`6位`行政区划代码(str)
     # 返回：省市区字符串(`;`分隔)
-    def parseCode(self, code_str):
+    def parseCode(self, code_str, sep = ';'):
         try:
+
             # 验证输入参数的合法性
             if(type(code_str) != type("str") or len(code_str) != 6):
                 raise("Error: input argument does not fit")
+
+            # 确认参数类型
+            code_type = self.__checkCodeType(code_str)
+
             # 分割参数
             code_part_12 = code_str[0: 2]
             code_part_34 = code_str[2: 4]
             code_part_56 = code_str[4: 6]
             #print(code_part_12, code_part_34, code_part_56)
-            # 特殊城市：北京市，天津市，上海市，重庆市，香港，澳门
-            sp_cities = ['110000', '120000', '310000', '500000', '810000', '820000']
-            # 搜索目标：省/直辖市/特别行政区
-            json_part1 = self.location_dict
-            #print(json_part1)
-            # 搜索目标：地级市
-            json_part2 = json_part1.get(code_part_12 + '0000').get('cities')
-            #print(json_part2)
-            # 搜索目标：市辖区
-            # 对特殊城市作特殊处理
-            if(code_part_12 + '0000' in sp_cities):
-                json_part3 = json_part2.get(code_part_12 + '00' + '00').get('districts')
+
+
+            if(code_type == 1):
+                # 搜索目标：省/直辖市/特别行政区
+                json_part1 = self.location_dict
+                # 返回值第1部分：省/直辖市/特别行政区
+                ret_part1 = json_part1.get(code_part_12 + '0000').get('name')
+                return ret_part1 + sep + sep
+            elif(code_type == 2):
+                # 搜索目标：省/直辖市/特别行政区
+                json_part1 = self.location_dict
+                #print(json_part1)
+                # 搜索目标：地级市
+                json_part2 = json_part1.get(code_part_12 + '0000').get('cities')
+                #print(json_part2)
+                # 返回值第1部分：省/直辖市/特别行政区
+                ret_part1 = json_part1.get(code_part_12 + '0000').get('name')
+                # 返回值第2部分：地级市
+                if(code_part_12 + '0000' in self.sp_cities):
+                    ret_part2 = json_part2.get(code_part_12 + '00' + '00').get('name')
+                else:
+                    ret_part2 = json_part2.get(code_part_12 + code_part_34 + '00').get('name')
+                return ret_part1 + sep + ret_part2 + sep
+            elif(code_type == 3):
+                # 搜索目标：省/直辖市/特别行政区
+                json_part1 = self.location_dict
+                #print(json_part1)
+                # 搜索目标：地级市
+                json_part2 = json_part1.get(code_part_12 + '0000').get('cities')
+                #print(json_part2)
+                # 搜索目标：市辖区
+                # 对特殊城市作特殊处理
+                if(code_part_12 + '0000' in self.sp_cities):
+                    json_part3 = json_part2.get(code_part_12 + '00' + '00').get('districts')
+                else:
+                    json_part3 = json_part2.get(code_part_12 + code_part_34 + '00').get('districts')
+                #print(json_part3)
+                # 返回值第1部分：省/直辖市/特别行政区
+                ret_part1 = json_part1.get(code_part_12 + '0000').get('name')
+                # 返回值第2部分：地级市
+                if(code_part_12 + '0000' in self.sp_cities):
+                    ret_part2 = json_part2.get(code_part_12 + '00' + '00').get('name')
+                else:
+                    ret_part2 = json_part2.get(code_part_12 + code_part_34 + '00').get('name')
+                # 返回值第3部分：市辖区
+                ret_part3 = json_part3.get(code_part_12 + code_part_34 + code_part_56)
+                # 返回值：`;`分隔
+                return ret_part1 + sep + ret_part2 + sep + ret_part3
             else:
-                json_part3 = json_part2.get(code_part_12 + code_part_34 + '00').get('districts')
-            #print(json_part3)
-            # 返回值第1部分：省/直辖市/特别行政区
-            ret_part1 = json_part1.get(code_part_12 + '0000').get('name')
-            # 返回值第2部分：地级市
-            if(code_part_12 + '0000' in sp_cities):
-                ret_part2 = json_part2.get(code_part_12 + '00' + '00').get('name')
-            else:
-                ret_part2 = json_part2.get(code_part_12 + code_part_34 + '00').get('name')
-            # 返回值第3部分：市辖区
-            ret_part3 = json_part3.get(code_part_12 + code_part_34 + code_part_56)
-            #print(ret_part1 + ';' + ret_part2 + ';' + ret_part3)
-            # 返回值：`;`分隔
-            return ret_part1 + ';' + ret_part2 + ';' + ret_part3
+                raise("Error: unknow code type")
         except:
             # 出错返回`None`
-            #print(None)
             return None
+
+    # 内部功能函数：检查行政区划代码类型
+    def __checkCodeType(self, code_str):
+        if(code_str[2:6] == '0000'):
+            # Flag: 省/直辖市/特别行政区
+            return 1
+        elif(code_str[4:6] == '00'):
+            # Flag: 地级市
+            return 2
+        else:
+            # Flag: 市辖区
+            return 3
+
 
 if __name__ == '__main__':
     # 测试用例参看`main.py`

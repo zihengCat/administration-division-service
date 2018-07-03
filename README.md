@@ -14,7 +14,7 @@ An Chinese Administration Division Service Module for **hsmap**.
 
 | API                   | 说明           |
 | --------------------- | -------------- |
-| `parseCode(code_str, [sep = ';'])` | 接受: 行政区划代码（6位字符串），返回: 省市区字符串（`;`分隔），错误返回`None` |
+| `parseCode(code_str, [sep = ';'])` | 接受参数：行政区划代码（6位字符串），正确返回：省市区字符串（`;`分隔），错误返回：`None` |
 
 > 表：模块`API`接口表
 

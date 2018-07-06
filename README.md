@@ -1,4 +1,4 @@
-# Administration Division Service
+# Chinese Administration Division Service
 
 中国行政区划信息服务模块。
 

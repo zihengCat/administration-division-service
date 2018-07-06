@@ -1,5 +1,7 @@
 # Chinese Administration Division Service
 
+[![Build Status](https://travis-ci.com/zihengCat/chinese-administration-division-service.svg?branch=master)](https://travis-ci.com/zihengCat/chinese-administration-division-service)
+
 中国行政区划信息服务模块。
 
 An Chinese Administration Division Service Module for `Python`.

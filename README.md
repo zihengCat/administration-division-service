@@ -1,6 +1,6 @@
 # Administration Division Service
 
-Python 中国行政区划信息服务模块。
+中国行政区划信息服务模块。
 
 An Chinese Administration Division Service Module for `Python`.
 

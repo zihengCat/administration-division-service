@@ -1,8 +1,8 @@
 # Administration Division Service
 
-火石 - 行政区划信息服务模块
+Python 中国行政区划信息服务模块。
 
-An Chinese Administration Division Service Module for **hsmap**.
+An Chinese Administration Division Service Module for `Python`.
 
 # Usage（使用说明）
 
@@ -14,14 +14,12 @@ An Chinese Administration Division Service Module for **hsmap**.
 
 | API                   | 说明           |
 | --------------------- | -------------- |
-| `parseCode(code_str, [sep = ';'])` | 接受参数：行政区划代码（6位字符串），正确返回：省市区字符串（`;`分隔），错误返回：`None` |
+| `parseCode(code_str, [sep = ';'])` | 接受参数：行政区划代码（6位字符串），正确返回：省市区字符串（默认`;`分隔），错误返回：`None` |
 
 > 表：模块`API`接口表
 
 ```python
-# -*- coding:utf-8 -*-
-
-# 1. 导入模块（使用`as`可简化书写）
+# 1. 导入模块（使用`as`简化书写）
 import administration_division_service as ads
 
 # 2. 创建类实例
@@ -33,13 +31,13 @@ print(i)
 ```
 > 代码清单：示例代码（详见`main.py`）
 
-# Data Source（数据源）
+# Data Source（数据来源）
 
 - [中国行政区划信息 - 区划代码数据库（GB/T 2260）](https://github.com/JasonBoy/china-location)
 
 > 更新时间: 2018-05-24
 
-# Author（维护人）
+# License（许可协议）
 
-子恒：lvzh@hsmap.cn
+[MIT](./LICENSE)
 

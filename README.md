@@ -31,7 +31,7 @@ c = ads.Administration_division_service()
 i = c.parseCode('130529')
 print(i)
 ```
-> 代码清单：示例代码（详见`main.py`）
+> 代码清单：示例代码「详见`main.py`」
 
 # Data Source（数据来源）
 

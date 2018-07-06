@@ -1,8 +1,7 @@
 # -*- coding:utf-8 -*-
 
 # 导入模块
-import administration_division_service as ads
-#from administration_division_service import Administration_division_service
+import chinese_administration_division_service as ads
 
 if __name__ == '__main__':
     # 创建类实例

@@ -20,7 +20,7 @@ An Chinese Administration Division Service Module for `Python`.
 
 ```python
 # 1. 导入模块（使用`as`简化书写）
-import administration_division_service as ads
+import chinese_administration_division_service as ads
 
 # 2. 创建类实例
 c = ads.Administration_division_service()

@@ -10,7 +10,6 @@ script:
     - "python main.py"
 
 after_script:
-    - "echo ${?}"
 
 #branches:
 #    only:

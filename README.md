@@ -8,7 +8,7 @@ An Chinese Administration Division Service Module for `Python`.
 
 # Usage（使用说明）
 
-此模块**同时兼容`Python2`与`Python3`，且无第三方依赖项**。
+此模块**同时兼容`Python2`与`Python3`，且无「第三方」依赖项**。
 
 1. 导入模块
 2. 初始化类实例

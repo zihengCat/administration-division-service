@@ -76,7 +76,6 @@ class Administration_division_service(object):
                 ret_part3 = json_part3.get(code_part_12 + code_part_34 + code_part_56)
                 # 返回值：`sep`分隔
                 return ret_part1 + sep + ret_part2 + sep + ret_part3
-
             else:
                 # 不明的行政区划类型
                 raise("Error: unknow code type")

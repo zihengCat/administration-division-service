@@ -35,6 +35,7 @@ if __name__ == '__main__':
     print(c.parseCode('hello'))
     print(c.parseCode('130825123'))
     print(c.parseCode('1235'))
+    print(c.parseCode('12356555'))
 
     ## 不存在的区划代码
     print(c.parseCode('123456'))

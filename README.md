@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/zihengCat/chinese-administration-division-service.svg?branch=master)](https://travis-ci.com/zihengCat/chinese-administration-division-service)
 
-中国行政区划信息服务模块。
+中华人民共和国行政区划数据服务模块「`Python`模块」。
 
 An Chinese Administration Division Service Module for `Python`.
 
@@ -21,7 +21,7 @@ An Chinese Administration Division Service Module for `Python`.
 > 表：模块`API`接口表
 
 ```python
-# 1. 导入模块（使用`as`简化书写）
+# 1. 导入模块「可以使用`as`简化书写」
 import chinese_administration_division_service as ads
 
 # 2. 创建类实例
@@ -36,6 +36,8 @@ print(i)
 # Data Source（数据来源）
 
 - [中国行政区划信息 - 区划代码数据库（GB/T 2260）](https://github.com/JasonBoy/china-location)
+
+- [中华人民共和国行政区划数据【省、市、区县、乡镇街道】中国省市区镇三级四级联动地址数据（GB/T 2260）](https://github.com/mumuy/data_location)
 
 > 更新时间: 2018-05-24
 

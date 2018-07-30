@@ -1,11 +1,10 @@
 # -*- coding:utf-8 -*-
-
-# 不需要`OS`模块
+# `OS`模块 => 文件路径
 #import os
+# `json`模块 => JSON 数据解析
 import json
-
-class Administration_division_service(object):
-
+# 行政区划信息服务类
+class AdministrationDivisionService(object):
     # 类初始化函数(无参)
     def __init__(self):
         # 超长JSON表(Oh my God!)
@@ -15,34 +14,28 @@ class Administration_division_service(object):
         self.location_dict = json.loads(t_json)
         # 特殊城市列表：北京市，天津市，上海市，重庆市，香港，澳门
         self.sp_cities = ['110000', '120000', '310000', '500000', '810000', '820000']
-
     # 对外接口API：parseCode()
     # 接受参数：6位行政区划代码（`str`）
     # 正确返回：省市区字符串（`sep`分隔，默认`;`）
     # 错误返回：`None`
     def parseCode(self, code_str, sep = ';'):
         try:
-
             # 验证输入参数的合法性
             if(type(code_str) != type("str") or len(code_str) != 6):
                 raise("Error: input argument does not fit")
-
             # 确认参数类型
             code_type = self.__checkCodeType(code_str)
-
             # 分割参数
             code_part_12 = code_str[0: 2]
             code_part_34 = code_str[2: 4]
             code_part_56 = code_str[4: 6]
             #print(code_part_12, code_part_34, code_part_56)
-
             if(code_type == 1):
                 # 搜索目标：省/直辖市/特别行政区
                 json_part1 = self.location_dict
                 # 返回值第1部分：省/直辖市/特别行政区
                 ret_part1 = json_part1.get(code_part_12 + '0000').get('name')
                 return ret_part1 + sep + sep
-
             elif(code_type == 2):
                 # 搜索目标：省/直辖市/特别行政区
                 json_part1 = self.location_dict
@@ -58,7 +51,6 @@ class Administration_division_service(object):
                 else:
                     ret_part2 = json_part2.get(code_part_12 + code_part_34 + '00').get('name')
                 return ret_part1 + sep + ret_part2 + sep
-
             elif(code_type == 3):
                 # 搜索目标：省/直辖市/特别行政区
                 json_part1 = self.location_dict
@@ -84,14 +76,12 @@ class Administration_division_service(object):
                 ret_part3 = json_part3.get(code_part_12 + code_part_34 + code_part_56)
                 # 返回值：`sep`分隔
                 return ret_part1 + sep + ret_part2 + sep + ret_part3
-
             else:
                 # 不明的行政区划类型
                 raise("Error: unknow code type")
         except:
             # 出错返回`None`
             return None
-
     # 内部功能函数：确认行政区划代码类型
     def __checkCodeType(self, code_str):
         if(code_str[2:6] == '0000'):
@@ -103,8 +93,6 @@ class Administration_division_service(object):
         else:
             # Flag: 市辖区
             return 3
-
 if __name__ == '__main__':
     # 测试用例参看`main.py`
     pass
-

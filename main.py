@@ -1,12 +1,11 @@
 # -*- coding:utf-8 -*-
 
 # 导入模块
-import administration_division_service as ads
-#from administration_division_service import Administration_division_service
+import chinese_administration_division_service as cads
 
 if __name__ == '__main__':
     # 创建类实例
-    c = ads.Administration_division_service()
+    c = cads.AdministrationDivisionService()
 
     # 测试用例
 
@@ -36,6 +35,7 @@ if __name__ == '__main__':
     print(c.parseCode('hello'))
     print(c.parseCode('130825123'))
     print(c.parseCode('1235'))
+    print(c.parseCode('12356555'))
 
     ## 不存在的区划代码
     print(c.parseCode('123456'))

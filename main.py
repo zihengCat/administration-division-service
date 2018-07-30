@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 
 # 导入模块
-import chinese_administration_division_service as ads
+import chinese_administration_division_service as cads
 
 if __name__ == '__main__':
     # 创建类实例
-    c = ads.Administration_division_service()
+    c = cads.AdministrationDivisionService()
 
     # 测试用例
 

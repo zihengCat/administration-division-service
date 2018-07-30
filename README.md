@@ -22,10 +22,10 @@ An Chinese Administration Division Service Module for `Python`.
 
 ```python
 # 1. 导入模块「可以使用`as`简化书写」
-import chinese_administration_division_service as ads
+import chinese_administration_division_service as cads
 
 # 2. 创建类实例
-c = ads.Administration_division_service()
+c = cads.AdministrationDivisionService()
 
 # 3. 调用解析方法
 i = c.parseCode('130529')

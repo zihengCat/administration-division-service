@@ -4,7 +4,7 @@
 # `json`模块 => JSON 数据解析
 import json
 # 行政区划信息服务类
-class Administration_division_service(object):
+class AdministrationDivisionService(object):
     # 类初始化函数(无参)
     def __init__(self):
         # 超长JSON表(Oh my God!)

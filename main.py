@@ -45,10 +45,10 @@ if __name__ == '__main__':
 
     # 正确用例 =>
 
-    print(c.parseString('北京市;;'))
-    print(c.parseString('河北省;邯郸市;广平县'))
-    print(c.parseString('西藏自治区;日喀则市;定日县'))
-    print(c.parseString('香港特别行政区;香港特别行政区;九龙城区'))
+    print(c.parseString('北京市'))
+    print(c.parseString('广平县'))
+    print(c.parseString('日喀则市'))
+    print(c.parseString('香港特别行政区'))
 
     # 错误用例 =>
 

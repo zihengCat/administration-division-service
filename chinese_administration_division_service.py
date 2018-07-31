@@ -7,14 +7,17 @@ import json
 class AdministrationDivisionService(object):
     # 类初始化函数(无参)
     def __init__(self):
-        # 超长JSON表(Oh my God!)
         # JSON数据 => Dict
-        with open(os.path.abspath('./db/location.min.json'), 'rt') as f1, \
-             open(os.path.abspath('./db/list.json'),         'rt') as f2:
+        f1_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), \
+                  'db/location.min.json')
+        f2_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), \
+                  'db/list.json')
+        with open(f1_path, 'rt') as f1, open(f2_path, 'rt') as f2:
             self.location_dict = json.loads(f1.read())
             d = json.loads(f2.read())
             self.location_dict_r = dict(zip(d.values(), d.keys()))
-            print(self.location_dict_r)
+            # for `DEBUG` Mode
+            #print(self.location_dict_r)
         # 特殊城市列表 => 北京，天津，上海，重庆，香港，澳门
         self.sp_cities = ['110000', # 北京市
                           '120000', # 天津市
@@ -29,8 +32,9 @@ class AdministrationDivisionService(object):
     # 错误返回：`None`
     def parseString(self, string_str):
         try:
-            return self.location_dict_r.get(i)
+            return self.location_dict_r.get(string_str)
         except Exception as e:
+            # for `DEBUG` Mode
             #print(e)
             # 出错返回`None`
             return None

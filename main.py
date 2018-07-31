@@ -7,7 +7,7 @@ if __name__ == '__main__':
     # 创建类实例
     c = cads.AdministrationDivisionService()
 
-    # 测试用例
+    # `parseCode`测试用例
 
     # 省级用例
     print(c.parseCode('110000'))
@@ -40,4 +40,18 @@ if __name__ == '__main__':
     ## 不存在的区划代码
     print(c.parseCode('123456'))
     print(c.parseCode('123123'))
+
+    # `parseString`测试用例
+
+    # 正确用例 =>
+
+    print(c.parseString('北京市;;'))
+    print(c.parseString('河北省;邯郸市;广平县'))
+    print(c.parseString('西藏自治区;日喀则市;定日县'))
+    print(c.parseString('香港特别行政区;香港特别行政区;九龙城区'))
+
+    # 错误用例 =>
+
+    print(c.parseString('xxxxxxxxx'))
+    print(c.parseString(';;'))
 

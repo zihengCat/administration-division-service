@@ -24,17 +24,12 @@ class AdministrationDivisionService(object):
                           '820000', # 澳门特别行政区
         ]
     # 对外接口API：parseString()
-    # 接受参数：省市区字符串（`sep`分隔，默认`;`）
+    # 接受参数：省市区字符串（`str`）
     # 正确返回：6位行政区划代码（`str`）
     # 错误返回：`None`
-    def parseString(self, string_str, sep = ';'):
+    def parseString(self, string_str):
         try:
-            s_list = string_str.split(sep)
-            for i in reversed(s_list):
-                if(i != ''):
-                    #print(i)
-                    # 算法复杂度: O(1)
-                    return self.location_dict_r.get(i)
+            return self.location_dict_r.get(i)
         except Exception as e:
             #print(e)
             # 出错返回`None`

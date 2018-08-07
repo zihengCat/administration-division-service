@@ -54,13 +54,15 @@ class AdministrationDivisionService(object):
             code_part_34 = code_str[2: 4]
             code_part_56 = code_str[4: 6]
             #print(code_part_12, code_part_34, code_part_56)
+            '''
             if(code_type == 1):
                 # 搜索目标：省/直辖市/特别行政区
                 json_part1 = self.location_dict
                 # 返回值第1部分：省/直辖市/特别行政区
                 ret_part1 = json_part1.get(code_part_12 + '0000').get('name')
                 return ret_part1 + sep + sep
-            elif(code_type == 2):
+            '''
+            if(code_type == 1 or code_type == 2):
                 # 搜索目标：省/直辖市/特别行政区
                 json_part1 = self.location_dict
                 #print(json_part1)
